@@ -1,0 +1,13 @@
+﻿$link-color: blue;
+
+table {
+    width: 100%;
+
+    td {
+        width: 200px;
+    }
+
+    a {
+        color: $link-color;
+    }
+}

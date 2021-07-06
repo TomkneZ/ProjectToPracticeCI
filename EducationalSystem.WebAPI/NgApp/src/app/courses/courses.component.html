@@ -1,0 +1,42 @@
+﻿<div class="container">
+    <form name="courseform" [formGroup]="form" novalidate *ngIf="notCreated; else created">
+        <mat-form-field class="form-group" color="accent" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput class="form-control name" type="text" name="name" formControlName="name" />
+            <div class="alert alert-danger"
+                 *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+                Name is not specified!
+            </div>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="form-group" color="accent" appearance="fill">
+            <mat-label>Unique Code</mat-label>
+            <input matInput class="form-control uniqueCode" type="number" name="uniqueCode" formControlName="uniqueCode" />
+            <div class="alert alert-danger"
+                 *ngIf="form.controls['uniqueCode'].invalid && form.controls['uniqueCode'].touched">
+                Unique code is not specified!
+            </div>
+        </mat-form-field>
+        <div class="form-group">
+            <button mat-raised-button name="addCourseButton" (click)="addCourse()">Add course</button>
+        </div>
+    </form>
+    <ng-template #created >
+        <p>Course was added!</p>
+    </ng-template>
+</div>
+<p>Courses:</p>
+<table mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let course"> {{course?.name}} </td>
+    </container>
+
+    <container matColumnDef="uniqueCode">
+        <th mat-header-cell *matHeaderCellDef> UniqueCode </th>
+        <td mat-cell *matCellDef="let course"> {{course?.uniqueCode}} </td>
+    </container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

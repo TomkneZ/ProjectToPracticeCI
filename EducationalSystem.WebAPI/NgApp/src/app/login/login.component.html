@@ -1,0 +1,24 @@
+﻿<div class="container">
+    <form [formGroup]="form" novalidate>
+        <mat-form-field class="form-group" color="accent" appearance="fill">
+            <mat-label>Login</mat-label>
+            <input matInput class="form-control login" type="text" name="login" formControlName="login" />
+            <div class="alert alert-danger"
+                 *ngIf="form.controls['login'].invalid && form.controls['login'].touched">
+                Login is not specified!
+            </div>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="form-group" color="accent" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput class="form-control password" type="password" name="password" formControlName="password" />
+            <div class="alert alert-danger"
+                 *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+                Password is not specified!
+            </div>
+        </mat-form-field>
+        <div class="form-group">
+            <button mat-raised-button name="loginButton" (click)="onLogin()">Login</button>
+        </div>
+    </form>   
+</div>

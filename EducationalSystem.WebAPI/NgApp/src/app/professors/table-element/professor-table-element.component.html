@@ -1,0 +1,7 @@
+﻿<tr>
+    <td width="200">{{professor?.name}}</td>
+    <td width="200">{{professor?.email}}</td>
+    <td width="200">{{professor?.phone}}</td> 
+    <a name="schoolbutton" mat-button routerLink="students" [queryParams]="{schoolId: professor?.schoolId}"><td width="200">{{professor?.schoolName}}</td></a>
+    <a name="coursebutton" mat-button routerLink="courses" [queryParams]="{professorId: professor?.id}"><td width="200">Add course</td></a>
+</tr>

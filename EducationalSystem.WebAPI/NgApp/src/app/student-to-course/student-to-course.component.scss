@@ -1,0 +1,73 @@
+﻿$margin-left-or-top: 50px;
+$shadow-color: #c7c7c7;
+$btncolor: #03a9f4;
+$form-width: 200px;
+
+@mixin centering() {
+    justify-content: center;
+    align-items: center;
+}
+
+.addform {
+    display: flex;
+    @include centering();
+    height: 80vh;
+
+    .studentToCourse {
+        width: $form-width;
+        padding: 16px 26px 126px 26px;
+        border-radius: $form-width / 20;
+        box-shadow: 0 4px 30px $shadow-color;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+
+    .addbtn {
+        position: absolute;
+        bottom: 490px;
+        width: 10.5%;
+        height: 40px;
+        border: none;
+        background: $btncolor;
+        text-align: center;
+        font-size: 13pt;
+        text-transform: capitalize;
+        color: #fff;
+
+        &:hover,
+        &:focus,
+        &:active:focus {
+            background: #e91e63;
+            cursor: pointer;
+            outline: none;
+            letter-spacing: 5px;
+        }
+    }
+
+    p {
+        margin-left: $margin-left-or-top
+    }
+}
+
+.infoform {
+    position: relative;
+    left: 1100px;
+    bottom: 535px;
+
+    height: 80vh;
+
+    .studentToCourse {
+        width: $form-width;
+        padding: 16px 26px 126px 26px;
+        border-radius: $form-width / 20;
+        box-shadow: 0 4px 30px $shadow-color;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+
+    button {
+        position: relative;
+        left: 190px;
+        bottom: 22px;
+    }
+}

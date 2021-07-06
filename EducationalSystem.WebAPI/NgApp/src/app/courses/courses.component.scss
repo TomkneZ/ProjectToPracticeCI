@@ -1,0 +1,49 @@
+﻿$margin-left-or-top: 5px;
+$shadow-color: #c7c7c7;
+$btncolor: #03a9f4;
+$form-width: 200px;
+
+@mixin centering() {
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    @include centering();
+    height: 40vh;
+
+    form {
+        width: $form-width;
+        padding: 16px 26px 66px 26px;
+        border-radius: $form-width / 20;
+        box-shadow: 0 4px 30px $shadow-color;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+
+    button {
+       
+        background: $btncolor;
+        text-align: center;
+        font-size: 13pt;
+        text-transform: capitalize;
+        color: #fff;
+
+        &:hover,
+        &:focus,
+        &:active:focus {
+            background: #e91e63;
+            cursor: pointer;
+            outline: none;
+            letter-spacing: 5px;
+        }
+    }
+
+    p {
+        margin-left: $margin-left-or-top
+    }
+}
+table {
+    width: 100%;
+}
