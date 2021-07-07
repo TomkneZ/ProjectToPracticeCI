@@ -14,6 +14,7 @@
 		<EmbeddedResource Remove="wwwroot\scripts\**" />
 		<None Remove="wwwroot\scripts\**" />
 		<None Remove="Microsoft.AspNet.WebApi.Core" />
+		<None Remove="Microsoft.AspNet.WebApi.Client" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -41,7 +42,6 @@
 		<PackageReference Include="Specflow" Version="3.7.13" />
 		<PackageReference Include="Specflow.NUnit" Version="3.7.13" />
 		<PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.13" />
-		<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="4.0.30506" />
 	</ItemGroup>
 
 	<ItemGroup>
