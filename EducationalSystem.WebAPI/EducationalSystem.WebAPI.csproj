@@ -13,12 +13,12 @@
 		<Content Remove="wwwroot\scripts\**" />
 		<EmbeddedResource Remove="wwwroot\scripts\**" />
 		<None Remove="wwwroot\scripts\**" />
+		<None Remove="Microsoft.AspNet.WebApi.Core" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="EntityFramework" Version="6.4.4" />
-		<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
@@ -41,6 +41,7 @@
 		<PackageReference Include="Specflow" Version="3.7.13" />
 		<PackageReference Include="Specflow.NUnit" Version="3.7.13" />
 		<PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.13" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="4.0.30506" />
 	</ItemGroup>
 
 	<ItemGroup>

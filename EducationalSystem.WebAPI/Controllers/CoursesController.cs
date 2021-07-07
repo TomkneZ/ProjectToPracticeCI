@@ -73,6 +73,13 @@ namespace EducationalSystem.WebAPI.Controllers
             return ErrorHandler.ExecuteAndHandleErrors(this, getActiveCourses);
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<string> Get()
+        {
+            return "Hello world!";
+        }
+
         [HttpDelete("{action}/{studentId}/{courseId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
