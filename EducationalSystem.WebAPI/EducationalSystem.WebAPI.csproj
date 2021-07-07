@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 		<StartupObject>EducationalSystem.WebAPI.Program</StartupObject>
 		<UserSecretsId>ffaef636-649e-43d3-a0df-6c1c4a81c1e1</UserSecretsId>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
@@ -53,7 +53,7 @@
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\DatabaseStructure\DatabaseStructure.csproj" />
