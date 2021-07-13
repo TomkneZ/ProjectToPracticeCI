@@ -1,27 +1,28 @@
-name: ASP.NET Core CI
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+name: Build Web App
+ 
+on: [push]
+ 
 jobs:
   build:
-
+ 
     runs-on: windows-latest
-
+ 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+     
+    - name: Restore NuGet Packages
+      run: nuget restore EducationalSystem.sln
+ 
+    - name: Build Web App
+      run: msbuild EducationalSystem.sln
