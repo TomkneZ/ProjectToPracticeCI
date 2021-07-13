@@ -23,7 +23,7 @@ namespace EducationalSystem.WebAPI.Controllers
 
         public AccountController(DBContext dbcontext)
         {
-            this.context = dbcontext;
+            this.context = dbcon
         }
 
         [Authorize]
