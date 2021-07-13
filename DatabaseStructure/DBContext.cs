@@ -14,7 +14,7 @@ namespace DatabaseStructure
 
         public DbSet<School> Schools { get; set; }
 
-        public DbSet<Student> Students { get; set; }
+        public DbSet<Student> Students { get; se }
 
         public DbSet<User> Users { get; set; }
 
