@@ -26,3 +26,6 @@ jobs:
  
     - name: Build Web App
       run: msbuild EducationalSystem.sln
+     
+    - name: Test
+        run: msbuild test --no-restore --verbosity normal
