@@ -25,8 +25,10 @@ jobs:
       run: nuget restore EducationalSystem.sln
  
     - name: Build Web App
-      run: msbuild EducationalSystem.sln     
+      run: msbuild EducationalSystem.sln
+     
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
 
     - name: Run Unit Tests
-      uses: darenm/Setup-VSTest@v1
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
