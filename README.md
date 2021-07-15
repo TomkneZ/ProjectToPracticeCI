@@ -1,12 +1,4 @@
-# Team Shults EDU
+# Current result of workflows
 
-----
-
-This repository is intended for educational purposes. You can host here:
-
-* Educational tasks and projects
-* Research & development results
-* Recipes & examples
-
-Please, use git orphan branches to host your code (`git checkout --orphan orphan_branch_name`).
+![example workflow](https://github.com/TomkneZ/ProjectToPracticeCI/actions/workflows/aspnetcore.yml/badge.svg)
 
