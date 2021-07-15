@@ -40,20 +40,6 @@ namespace EducationalSystem.Test.StudentControllerTest
         }
 
         [TestMethod]
-        public void AddStudent_InputIsValidStudentModel_ReturnsAddedStudent()
-        {
-            mapperMock.Setup(mapper => mapper.Map<Student, ActivePersonViewModel>(It.IsAny<Student>())).Returns(Mocks.StudentViewModel);
-
-            var actionResult = controller.AddStudent(Mocks.Student);
-
-            var contentResult = actionResult.Result as OkObjectResult;
-
-            var returnedStudent = contentResult.Value as ActivePersonViewModel;
-
-            Assert.AreEqual(returnedStudent.Id, Mocks.StudentViewModel.Id);
-        }
-
-        [TestMethod]
         public void AddStudent_InputIsStudentModelWithInvalidSchoolId_ReturnsBadRequest()
         {
             studentServiceMock.Setup(service => service.AddStudent(Mocks.StudentWithInvalidSchoolId)).Throws(new DbUpdateException());
