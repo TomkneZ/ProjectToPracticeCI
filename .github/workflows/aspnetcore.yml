@@ -34,4 +34,4 @@ jobs:
     - name: Run VSTest
       id: run_vstest
       working-directory: $\x64\Debug\
-      run: vstest.console.exe /Platform:x64 .\UnitTests.dll
+      run: vstest.console.exe /Platform:x64 EducationalSystem.Test/EducationalSystem.Test.csproj
