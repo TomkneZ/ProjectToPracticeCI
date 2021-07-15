@@ -25,10 +25,8 @@ jobs:
       run: nuget restore EducationalSystem.sln
  
     - name: Build Web App
-      run: msbuild EducationalSystem.sln
-     
-    - name: Setup VSTest and add to PATH
-      uses: darenm/Setup-VSTest@v1
+      run: msbuild EducationalSystem.sln     
 
-    - name: Run VSTest
+    - name: Run Unit Tests
+      uses: darenm/Setup-VSTest@v1
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
