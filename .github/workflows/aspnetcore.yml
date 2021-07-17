@@ -3,7 +3,7 @@ name: Build Web App
 on: [push]
  
 jobs:
-  database structure build:
+  DatabaseStructureBuild:
     runs-on: windows-latest 
     steps:
     - uses: actions/checkout@v1
@@ -21,7 +21,25 @@ jobs:
     - name: Build Library
       run: msbuild ./DatabaseStructure/bin/Debug/net5.0/DatabaseStructure.dll
       
-  build: 
+  ServiceLayerBuild:
+    runs-on: windows-latest 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
+    - name: Restore NuGet Packages
+      run: nuget restore EducationalSystem.sln 
+    - name: Build Library
+      run: msbuild ./ServiceLayer/bin/Debug/net5.0/ServiceLayer.dll
+      
+  Build: 
     runs-on: windows-latest 
     steps:
     - uses: actions/checkout@v1
