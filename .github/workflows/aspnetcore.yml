@@ -15,9 +15,7 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
       env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
-    - name: Restore NuGet Packages
-      run: nuget restore ./DatabaseStructure/DatabaseStructure.csproj
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Build Database Structure
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
       
@@ -35,9 +33,7 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
       env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
-    - name: Restore NuGet Packages
-      run: nuget restore ./ServiceLayer/ServiceLayer.csproj
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Build Library
       run: msbuild ./ServiceLayer/ServiceLayer.csproj
       
