@@ -23,6 +23,8 @@ jobs:
       
   ServiceLayerBuild:
     runs-on: windows-latest 
+    needs:
+      - DatabaseStructureBuild
     steps:
     - uses: actions/checkout@v1
       name: Checkout Code     
