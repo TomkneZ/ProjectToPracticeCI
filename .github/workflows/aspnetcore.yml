@@ -3,7 +3,7 @@ name: Build Web App
 on: [push]
  
 jobs:
-  DatabaseStructureBuild:
+  ServiceBuild:
     runs-on: windows-latest 
     steps:
     - uses: actions/checkout@v1
@@ -17,48 +17,58 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
     - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.sln 
-    - name: Build Library
+      run: nuget restore EducationalSystem.sln
+    - name: Build Database Structure
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
-      
-  ServiceLayerBuild:
-    runs-on: windows-latest 
-    needs:
-      - DatabaseStructureBuild
-    steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'       
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
-    - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.sln 
-    - name: Build Library
-      run: msbuild ./ServiceLayer/ServiceLayer.csproj
-      
-  Build: 
-    runs-on: windows-latest 
-    steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'       
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
-    - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.sln 
+    - name: Build Service Layer
+      run: msbuild ./ServiceLayer/ServiceLayer.csproj   
     - name: Build Web App
       run: msbuild EducationalSystem.sln     
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
+   
+  AngularBuild:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code 
+    - name: Setup Node.js 14 LTS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install NPM Modules
+      working-directory: ./EducationalSystem.WebAPI/NgApp
+      run: npm install
+    - name: Build Angular App
+      working-directory: ./EducationalSystem.WebAPI/NgApp
+      run: npm run build
+    - name: Test Angular App
+      working-directory: ./EducationalSystem.WebAPI/NgApp
+      run: npm run test
+   
+  BDDTests:
+   runs-on: windows-latest 
+   needs:
+    - ServiceBuild
+    - AngularBuild
+   steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
+    - name: Restore NuGet Packages
+      run: nuget restore ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
+    - name: Build Tests App
+      run: msbuild ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
+    - name: Run Gerkin Tests
+      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
