@@ -17,7 +17,7 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
     - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.dll
+      run: nuget restore EducationalSystem.sln
     - name: Build Database Structure
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
     - name: Build Library
