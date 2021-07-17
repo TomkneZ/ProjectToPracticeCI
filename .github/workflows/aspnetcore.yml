@@ -20,7 +20,7 @@ jobs:
       run: nuget restore EducationalSystem.sln
     - name: Build Database Structure
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
-    - name: Build Library
+    - name: Build Service Layer
       run: msbuild ./ServiceLayer/ServiceLayer.csproj   
     - name: Build Web App
       run: msbuild EducationalSystem.sln     
@@ -29,12 +29,26 @@ jobs:
     - name: Run Unit Tests
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
       
-  TestBuild:
+  BDDTests:
    runs-on: windows-latest 
    needs:
     - Build
    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
+    - name: Restore NuGet Packages
+      run: nuget restore ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
+    - name: Build Tests App
+      run: msbuild ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
-      run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
+      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
