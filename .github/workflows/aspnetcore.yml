@@ -3,7 +3,7 @@ name: Build Web App
 on: [push]
  
 jobs:
-  DatabaseStructureBuild:
+  LibrariesBuild:
     runs-on: windows-latest 
     steps:
     - uses: actions/checkout@v1
@@ -17,11 +17,11 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
     - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.sln 
-    - name: Build Library
+      run: nuget restore /DatabaseStructure/DatabaseStructure.csproj
+    - name: Build Database Structure
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
       
-  ServiceLayerBuild:
+ ServiceLayerBuild:
     runs-on: windows-latest 
     needs:
       - DatabaseStructureBuild
@@ -37,12 +37,14 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'     
     - name: Restore NuGet Packages
-      run: nuget restore EducationalSystem.sln 
+      run: nuget restore /ServiceLayer/ServiceLayer.csproj
     - name: Build Library
       run: msbuild ./ServiceLayer/ServiceLayer.csproj
       
   Build: 
     runs-on: windows-latest 
+    needs:
+    - ServiceLayerBuild
     steps:
     - uses: actions/checkout@v1
       name: Checkout Code     
