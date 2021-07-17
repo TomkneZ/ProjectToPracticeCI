@@ -23,7 +23,7 @@ jobs:
     - name: Build Library
       run: msbuild ./ServiceLayer/ServiceLayer.csproj
       
-  Build Service: 
+  ServiceBuild: 
     runs-on: windows-latest 
     needs:
     - LibrariesBuild
