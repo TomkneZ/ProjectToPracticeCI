@@ -34,19 +34,19 @@ jobs:
    steps:
     - uses: actions/checkout@v1
       name: Checkout Code 
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
+    - name: Setup Node.js 14 LTS
+      uses: actions/setup-node@v2
       with:
-        node-version: '12.x'
-    - name: Install dependencies
+        node-version: '14'
+    - name: Install NPM Modules
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm ci
-    - name: Build
+      run: npm install
+    - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm run build:ci
-    - name: Test
+      run: npm run build
+    - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm run test:ci  
+      run: npm run test
    
   BDDTests:
    runs-on: windows-latest 
