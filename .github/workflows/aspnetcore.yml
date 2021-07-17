@@ -31,6 +31,8 @@ jobs:
       
   TestBuild:
    runs-on: windows-latest 
+   needs:
+    - Build
    steps:
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
