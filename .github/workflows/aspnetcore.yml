@@ -19,7 +19,7 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore EducationalSystem.sln 
     - name: Build Library
-      run: msbuild ./DatabaseStructure/bin/Debug/net5.0/DatabaseStructure.dll
+      run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
       
   ServiceLayerBuild:
     runs-on: windows-latest 
@@ -37,7 +37,7 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore EducationalSystem.sln 
     - name: Build Library
-      run: msbuild ./ServiceLayer/bin/Debug/net5.0/ServiceLayer.dll
+      run: msbuild ./ServiceLayer/ServiceLayer.csproj
       
   Build: 
     runs-on: windows-latest 
