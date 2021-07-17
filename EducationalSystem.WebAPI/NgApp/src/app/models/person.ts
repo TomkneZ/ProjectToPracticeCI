@@ -4,6 +4,6 @@
     email?: string;
     phone?: string;
     createDate: Date;    
-    shoolName?: string;
+    schoolName?: string;
     schoolId?: string;
 }
