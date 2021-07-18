@@ -5,5 +5,5 @@
     phone?: string;
     createDate: Date;    
     schoolName?: string;
-    schoolId?: string;
+    schoolId: number;
 }
