@@ -44,12 +44,6 @@ jobs:
     - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build
-    - name: Install Dependencies for Test
-      working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm install puppeteer
-    - name: Test Angular App
-      working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm test
   
   BDDTests:
    runs-on: windows-latest 
@@ -74,4 +68,4 @@ jobs:
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Gerkin Tests
-      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
+      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.dll
