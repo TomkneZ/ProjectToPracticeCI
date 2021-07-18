@@ -47,7 +47,7 @@ jobs:
       run: npm run build
     - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm test --browsers=Chrome
+      run: npm test --browsers=ChromeHeadlessCI
   
   BDDTests:
    runs-on: windows-latest 
