@@ -31,6 +31,7 @@ jobs:
    
   AngularBuild:
    runs-on: ubuntu-latest
+   continue-on-error: false
    steps:
     - uses: actions/checkout@v1
       name: Checkout Code 
@@ -44,6 +45,8 @@ jobs:
     - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build
+    - name: Test Angular App
+      run: npm test
   
   BDDTests:
    runs-on: windows-latest 
