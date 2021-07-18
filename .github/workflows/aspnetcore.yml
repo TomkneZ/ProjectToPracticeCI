@@ -44,6 +44,9 @@ jobs:
     - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build
+    - name: Install Dependencies for Test
+      working-directory: ./EducationalSystem.WebAPI/NgApp
+      run: npm install puppeteer
     - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm test
