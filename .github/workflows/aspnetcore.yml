@@ -68,4 +68,4 @@ jobs:
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Gerkin Tests
-      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.dll
+      run: vstest.console.exe ./EducationalSystem.BDDTesting/EducationalSystem.BDDTesting.sln
