@@ -46,6 +46,7 @@ jobs:
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build
     - name: Test Angular App
+      working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm test
   
   BDDTests:
