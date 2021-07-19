@@ -45,6 +45,9 @@ jobs:
     - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build
+    - name: Install Browser for Test
+      working-directory: ./EducationalSystem.WebAPI/NgApp
+      run: npm i -D puppeteer karma-chrome-launcher
     - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm test -- --no-watch --no-progress --browsers=Chrome
