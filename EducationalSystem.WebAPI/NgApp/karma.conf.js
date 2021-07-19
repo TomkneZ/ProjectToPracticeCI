@@ -31,12 +31,12 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
+        browsers: ['ChromeHeadless'],
         singleRun: false,
         restartOnFileChange: true,
         customLaunchers: {
-            Chrome: {
-                base: 'Chrome',
+            ChromeHandless: {
+                base: 'ChromeHandless',
                 flags: ['--no-sandbox']
               }
           }
