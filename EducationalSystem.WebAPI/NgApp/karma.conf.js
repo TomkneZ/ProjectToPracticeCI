@@ -31,18 +31,14 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome'],
         singleRun: false,
         restartOnFileChange: true,
+        browsers: ['ChromeHeadlessCI'],
         customLaunchers: {
-            ChromeCustom: {
-              base: 'Chrome',
-              flags: ['--no-sandbox', '--disable-gpu']
-            },
-            Chrome: {
-                base: 'Chrome',
+            ChromeHeadlessCI: {
+                base: 'ChromeHeadless',
                 flags: ['--no-sandbox']
-              }
-          }
+            }
+        }           
     });
 };
