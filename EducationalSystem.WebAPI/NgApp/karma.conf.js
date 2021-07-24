@@ -33,6 +33,16 @@ module.exports = function (config) {
         autoWatch: true,
         browsers: ['Chrome'],
         singleRun: false,
-        restartOnFileChange: true
+        restartOnFileChange: true,
+        customLaunchers: {
+            ChromeCustom: {
+              base: 'Chrome',
+              flags: ['--no-sandbox', '--disable-gpu']
+            },
+            Chrome: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+              }
+          }
     });
 };
