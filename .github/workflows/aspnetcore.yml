@@ -50,7 +50,7 @@ jobs:
       run: npm i -D puppeteer karma-chrome-launcher
     - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm test --watch=false --browsers=ChromeHandless
+      run: npm test
   
   BDDTests:
    runs-on: windows-latest 
