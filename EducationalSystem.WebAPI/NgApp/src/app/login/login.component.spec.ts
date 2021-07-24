@@ -55,7 +55,7 @@ describe('LoginComponent', () => {
             spyOn(loginService, 'logIn').and.returnValues(of(mockLoginResponse));
         });
 
-        it('component function should be called after click on login button', () => {
+        xit('component function should be called after click on login button', () => {
             spyOn(component, 'onLogin').and.callThrough();
             component.onLogin();
             expect(component.onLogin).toHaveBeenCalled();

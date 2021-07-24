@@ -11,7 +11,7 @@ module.exports = function (config) {
         ],
         client: {
             jasmine: {
-                
+
             },
             clearContext: false
         },
@@ -31,14 +31,8 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['ChromeHeadless'],
+        browsers: ['Chrome'],
         singleRun: false,
-        restartOnFileChange: true,
-        customLaunchers: {
-            ChromeHandless: {
-                base: 'ChromeHandless',
-                flags: ['--no-sandbox']
-              }
-          }
+        restartOnFileChange: true
     });
 };

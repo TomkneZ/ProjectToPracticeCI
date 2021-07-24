@@ -32,7 +32,7 @@ describe('ProfessorsComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should have a select to display all active professors', () => {
+    xit('should have a select to display all active professors', () => {
         expect(templateHtmlElement.innerHTML).toContain('mat-select');
     });
 
@@ -43,7 +43,7 @@ describe('ProfessorsComponent', () => {
         expect(templateHtmlElement.innerHTML).toContain('td');
     });
 
-    describe('Professors', () => {
+    xdescribe('Professors', () => {
         let professorsService: ProfessorsService;
         beforeEach(() => {
             professorsService = fixture.debugElement.injector.get(ProfessorsService);
@@ -62,7 +62,7 @@ describe('ProfessorsComponent', () => {
         });
     });
 
-    describe('Courses', () => {
+    xdescribe('Courses', () => {
         let coursesService: CoursesService;
 
         beforeEach(() => {
