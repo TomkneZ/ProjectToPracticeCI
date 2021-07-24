@@ -39,6 +39,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Setup
+      run: npm ci
     - name: Install NPM Modules
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm install
@@ -50,7 +52,8 @@ jobs:
       run: npm i -D puppeteer karma-chrome-launcher
     - name: Test Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: npm test
+      run: |
+          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
   
   BDDTests:
    runs-on: windows-latest 
