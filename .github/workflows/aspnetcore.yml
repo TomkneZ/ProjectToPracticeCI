@@ -31,9 +31,6 @@ jobs:
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
-    - name: Publish
-      run: |
-        msbuild publish -c Release -o dotnetcorewebapp
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
