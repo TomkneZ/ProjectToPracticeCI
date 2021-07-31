@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalSystem.WebAPI", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationalSystem.Test", "EducationalSystem.Test\EducationalSystem.Test.csproj", "{D6B9B8B0-B9B2-416C-B65F-D4FD28D04925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationalSystem.BDDTesting", "EducationalSystem.BDDTesting\EducationalSystem.BDDTesting.csproj", "{34D51969-6D87-40D8-8CE6-1AB6C6B4DF11}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{D6B9B8B0-B9B2-416C-B65F-D4FD28D04925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6B9B8B0-B9B2-416C-B65F-D4FD28D04925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6B9B8B0-B9B2-416C-B65F-D4FD28D04925}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34D51969-6D87-40D8-8CE6-1AB6C6B4DF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34D51969-6D87-40D8-8CE6-1AB6C6B4DF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34D51969-6D87-40D8-8CE6-1AB6C6B4DF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34D51969-6D87-40D8-8CE6-1AB6C6B4DF11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
