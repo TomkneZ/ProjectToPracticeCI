@@ -65,7 +65,7 @@ jobs:
   BDDTests:
    runs-on: windows-latest 
    needs:
-    - ServiceBuild
+    - ServiceBuildAndDeploy
     - AngularBuild
    steps:
     - uses: actions/checkout@v1
