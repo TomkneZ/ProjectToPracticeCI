@@ -32,7 +32,7 @@ jobs:
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
-      run: vstest.console.exe ./EducationalSystem.Test/_build/Debug/net5.0/EducationalSystem.Test.dll
+      run: vstest.console.exe ./_build/EducationalSystem.Test/Debug/net5.0/EducationalSystem.Test.dll
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
