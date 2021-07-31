@@ -25,8 +25,10 @@ jobs:
       run: msbuild ./DatabaseStructure/DatabaseStructure.csproj
     - name: Build Service Layer
       run: msbuild ./ServiceLayer/ServiceLayer.csproj   
+    - name: Create Build Directory
+      run: mkdir _build
     - name: Build Web App
-      run: msbuild EducationalSystem.sln     
+      run: msbuild EducationalSystem.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"  
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
