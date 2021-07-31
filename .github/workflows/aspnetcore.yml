@@ -1,9 +1,12 @@
 name: Build Web App
  
-on: [push]
- 
+on: [push, pull_request]
+
+env:
+  AZURE_WEBAPP_NAME: EducationalSystemApp
+
 jobs:
-  ServiceBuild:
+  ServiceBuildAndDeploy:
     runs-on: windows-latest 
     steps:
     - uses: actions/checkout@v1
@@ -28,6 +31,15 @@ jobs:
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
       run: vstest.console.exe ./EducationalSystem.Test/bin/Debug/net5.0/EducationalSystem.Test.dll
+    - name: Publish
+      run: |
+        msbuild publish -c Release -o dotnetcorewebapp
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: './dotnetcorewebapp'
    
   AngularBuild:
    runs-on: ubuntu-latest
