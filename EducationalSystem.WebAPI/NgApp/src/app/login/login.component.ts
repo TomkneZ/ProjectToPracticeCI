@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
     public form: FormGroup;
+    public testString = "Test123";
 
     public constructor(private loginService: LoginService, @Inject(LOCAL_STORAGE) private storage: StorageService,
                        private router: Router, private notification: MessageService) {
@@ -40,5 +41,13 @@ export class LoginComponent {
                     this.router.navigate(['/professors']);
                 }
             );
+    }
+
+    public onTest(){
+        this.loginService.test().pipe(take(1)).subscribe(
+            (data:string) => {
+                this.testString = data;
+            }
+        )
     }
 }

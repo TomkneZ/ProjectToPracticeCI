@@ -2,8 +2,8 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:44370/api/',
-    hostUrl: 'https://localhost:44370/',
+    apiUrl: 'https://educationalsystemapp.azurewebsites.net/api/',
+    hostUrl: 'https://educationalsystemapp.azurewebsites.net/',
     logging: {
         level: NgxLoggerLevel.DEBUG,
     }

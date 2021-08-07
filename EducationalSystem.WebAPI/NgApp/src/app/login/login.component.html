@@ -1,4 +1,7 @@
-﻿<div class="container">
+﻿<div>
+    <button mat-raised-button name="testButton" (click)="onTest()">{{testString}}</button>
+</div>
+<div class="container">
     <form [formGroup]="form" novalidate>
         <mat-form-field class="form-group" color="accent" appearance="fill">
             <mat-label>Login</mat-label>

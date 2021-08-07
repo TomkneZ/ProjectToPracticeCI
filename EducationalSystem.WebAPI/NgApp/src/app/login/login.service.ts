@@ -9,6 +9,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 export class LoginService {
     public isLoggedIn: boolean;
     private getLoginResponseUrl = 'Account/Token/';
+    private getTestUrl = "courses";
 
     public constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
@@ -18,5 +19,9 @@ export class LoginService {
 
     public logOut(): void {
         this.storage.clear();
+    }
+
+    public test(): Observable<string>{
+        return this.http.get(`${environment.apiUrl}${this.getTestUrl}`, {responseType: 'text'});
     }
 }
