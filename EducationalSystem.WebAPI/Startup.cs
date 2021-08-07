@@ -95,7 +95,7 @@ namespace EducationalSystem.WebAPI
 
             app.UseRouting();
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+            app.UseCors(builder => builder.WithOrigins("https://educationalsystemfront.azurewebsites.net")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials()
