@@ -65,7 +65,7 @@ jobs:
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME_FRONT }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONT }}
-        package: "./EducationalSystem.WebAPI/NgApp/dist"
+        package: "./EducationalSystem.WebAPI/NgApp/dist/NgApp"
   
   BDDTests:
    runs-on: windows-latest 
