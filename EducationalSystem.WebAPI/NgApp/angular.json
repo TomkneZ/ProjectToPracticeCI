@@ -4,6 +4,9 @@
     "EducationalSystem": {
       "projectType": "application",
       "root": "",
+      "assets": [
+        "web.config"
+      ],
       "sourceRoot": "src",
       "architect": {
         "build": {
