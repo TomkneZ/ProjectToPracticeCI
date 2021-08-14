@@ -4,9 +4,6 @@
     "EducationalSystem": {
       "projectType": "application",
       "root": "",
-      "assets": [
-        "src/web.config"
-      ],
       "sourceRoot": "src",
       "architect": {
         "build": {
@@ -20,6 +17,9 @@
             "aot": true,
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
+            "assets": [
+              "src/web.config"
             ]
           },
           "configurations": {
