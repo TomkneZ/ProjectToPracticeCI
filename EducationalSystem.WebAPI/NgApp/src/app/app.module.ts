@@ -40,17 +40,16 @@ import { reducers } from './store/index';
 import { LoginGuard } from './login/login.guard';
 
 const appRoutes: Routes = [
-    { path: '', component: LoginComponent },
+    { path: '', component: ProfessorsComponent },
     {
         path: 'professors',
         component: ProfessorsComponent,
         children: [
             { path: 'students', component: StudentsComponent },
             { path: 'courses', component: CoursesComponent },
-        ],
-        canActivate: [LoginGuard],
-        canActivateChild: [LoginGuard]
+        ]
     },
+    { path: 'professors', component: ProfessorsComponent },
     { path: 'professorinfo', component: ProfessorInfoComponent },
     { path: 'studenttocourse', component: StudentToCourseComponent },
     { path: 'errors', component: ErrorsComponent, pathMatch: 'full' }
