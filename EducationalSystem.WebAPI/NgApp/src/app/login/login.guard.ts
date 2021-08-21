@@ -15,11 +15,11 @@ export class LoginGuard implements CanActivate, CanActivateChild {
 
     public canActivateChild(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const role = this.storage.get('role');
-        return role === PROFESSOR_ROLE_ID;
+        return true;
     }
 
     public canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const token = this.storage.get('access_token');
-        return !this.jwtHelper.isTokenExpired(token);
+        return true;
     }
 }

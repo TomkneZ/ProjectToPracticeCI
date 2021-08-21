@@ -40,9 +40,17 @@ import { reducers } from './store/index';
 import { LoginGuard } from './login/login.guard';
 
 const appRoutes: Routes = [
-    { path: '', component: ProfessorsComponent },
-    { path: 'students', component: StudentsComponent },
-    { path: 'courses', component: CoursesComponent },
+    { path: '', component: ProfessorInfoComponent },
+    {
+        path: 'professors',
+        component: ProfessorsComponent,
+        children: [
+            { path: 'students', component: StudentsComponent },
+            { path: 'courses', component: CoursesComponent },
+        ],
+        canActivate: [LoginGuard],
+        canActivateChild: [LoginGuard]
+    },
     { path: 'professors', component: ProfessorsComponent },
     { path: 'professorinfo', component: ProfessorInfoComponent },
     { path: 'studenttocourse', component: StudentToCourseComponent },
