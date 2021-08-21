@@ -40,7 +40,7 @@ import { reducers } from './store/index';
 import { LoginGuard } from './login/login.guard';
 
 const appRoutes: Routes = [
-    { path: '', component: ProfessorsComponent },
+    { path: '', component: LoginComponent },
     { path: 'professors', component: ProfessorsComponent },
     { path: 'students', component: StudentsComponent },
     { path: 'courses', component: CoursesComponent },
