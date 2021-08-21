@@ -31,6 +31,8 @@ export class ProfessorsComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        const access_token = this.storage.get('access_token');
+        this.notification.connect(access_token);
         this.loadProfessors();
         this.subscription.add(
             this.notification.message.subscribe(msg => {

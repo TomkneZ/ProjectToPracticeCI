@@ -41,9 +41,16 @@ import { LoginGuard } from './login/login.guard';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'professors', component: ProfessorsComponent },
-    { path: 'students', component: StudentsComponent },
-    { path: 'courses', component: CoursesComponent },
+    {
+        path: 'professors',
+        component: ProfessorsComponent,
+        children: [
+            { path: 'students', component: StudentsComponent },
+            { path: 'courses', component: CoursesComponent },
+        ],
+        canActivate: [LoginGuard],
+        canActivateChild: [LoginGuard]
+    },
     { path: 'professorinfo', component: ProfessorInfoComponent },
     { path: 'studenttocourse', component: StudentToCourseComponent },
     { path: 'errors', component: ErrorsComponent, pathMatch: 'full' }
