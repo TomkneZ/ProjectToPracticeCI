@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
@@ -56,6 +56,11 @@ const appRoutes: Routes = [
     { path: 'errors', component: ErrorsComponent, pathMatch: 'full' }
 ];
 
+import { FeatureFlagsService } from "./services/feature-flags.service";
+
+const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
+    featureFlagsService.loadConfig();
+
 @NgModule({
     imports: [
         StorageServiceModule,
@@ -99,6 +104,12 @@ const appRoutes: Routes = [
     providers: [
         LoginGuard,
         { provide: ErrorHandler, useClass: GlobalErrorHandler },
+        {
+            provide: APP_INITIALIZER,
+            useFactory: featureFactory,
+            deps: [FeatureFlagsService],
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })
