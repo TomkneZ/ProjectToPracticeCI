@@ -1,5 +1,6 @@
 using AutoMapper;
 using DatabaseStructure;
+using System.Configuration;
 using EducationalSystem.WebAPI.Habs;
 using EducationalSystem.WebAPI.Options;
 using EducationalSystem.WebAPI.Profiles;
@@ -28,7 +29,9 @@ namespace EducationalSystem.WebAPI
         {
             Configuration.Bind(new Config());
 
-            var connectionString = Configuration.GetSection("DefaultConnection").Value;
+            //var connectionString = Configuration.GetSection("DefaultConnection").Value;
+            var key = "DefaultConnection";
+            var connectionString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
 
             services.AddDbContext<DBContext>(options => options.UseSqlServer(connectionString));
 
