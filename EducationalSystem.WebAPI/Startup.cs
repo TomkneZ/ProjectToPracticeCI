@@ -30,10 +30,8 @@ namespace EducationalSystem.WebAPI
         {
             Configuration.Bind(new Config());
 
-            //var connectionString = Configuration.GetSection("DefaultConnection").Value;
             var name = "MYSQLCONNSTR_DefaultConnection";
             var connectionString = System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
-            //var connectionString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
 
             services.AddDbContext<DBContext>(options => options.UseSqlServer(connectionString));
 
