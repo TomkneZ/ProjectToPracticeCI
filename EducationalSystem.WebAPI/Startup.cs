@@ -28,7 +28,7 @@ namespace EducationalSystem.WebAPI
         {
             Configuration.Bind(new Config());
 
-            var connectionString = Configuration.GetSection("ConnectionStrings:DefaultConnection").Value;
+            var connectionString = Configuration.GetSection("DefaultConnection").Value;
 
             services.AddDbContext<DBContext>(options => options.UseSqlServer(connectionString));
 
