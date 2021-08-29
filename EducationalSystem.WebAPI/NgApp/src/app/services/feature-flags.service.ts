@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { get, has } from "lodash";
 import { FeatureConfig } from "../models/feature-config";
+import { AppConfiguration } from "read-appsettings-json";
 
 @Injectable({
   providedIn: "root"
@@ -13,8 +14,9 @@ export class FeatureFlagsService {
   constructor(private http: HttpClient) {}
 
   loadConfig() {
+    let value =AppConfiguration.Setting().Application.noauth;
     this.config = {
-      "no-auth": true,
+      "no-auth": value,
       "feature": false
     };
   }

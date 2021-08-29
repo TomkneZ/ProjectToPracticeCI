@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "read-appsettings-json": "^1.0.98"
+  }
+}
