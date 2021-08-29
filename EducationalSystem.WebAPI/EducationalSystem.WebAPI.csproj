@@ -54,7 +54,7 @@
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
-		
+	  <TypeScriptCompile Include="NgApp\src\app\guards\can-load.guard.ts" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\DatabaseStructure\DatabaseStructure.csproj" />
@@ -67,6 +67,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Areas" />
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 </Project>

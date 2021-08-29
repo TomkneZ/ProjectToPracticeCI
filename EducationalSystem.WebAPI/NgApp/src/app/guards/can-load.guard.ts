@@ -1,27 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
 import { FeatureFlagsService } from '../services/feature-flags.service';
+import {
+    ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot
+} from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
 })
-export class FeatureGuard implements CanLoad {
+export class FeatureGuard implements CanActivate {
     constructor(
         private featureFlagsService: FeatureFlagsService,
         private router: Router
     ) {}
-    canLoad(
-        route: Route,
-        segments: UrlSegment[]
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        const {
-            data: { feature }, // <-- Get the module name from route data
-        } = route;
+
+    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        let feature = route.data.feature as string;  
         if (feature) {
             const isEnabled = this.featureFlagsService.isFeatureEnabled(feature);
             if (isEnabled) {

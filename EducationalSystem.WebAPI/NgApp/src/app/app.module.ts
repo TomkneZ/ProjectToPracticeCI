@@ -38,6 +38,7 @@ import { StudentsEffects } from './store/effects/students.effects';
 import { CoursesEffects } from './store/effects/courses.effects';
 import { reducers } from './store/index';
 import { LoginGuard } from './login/login.guard';
+import { FeatureGuard } from './guards/can-load.guard';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
         canActivateChild: [LoginGuard]
     },
     { path: 'professorinfo', component: ProfessorInfoComponent },
-    { path: 'studenttocourse', component: StudentToCourseComponent },
+    { path: 'studenttocourse', component: StudentToCourseComponent, canActivate: [FeatureGuard], data: {feature: "no-auth"} },
     { path: 'errors', component: ErrorsComponent, pathMatch: 'full' }
 ];
 
@@ -103,6 +104,7 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     ],
     providers: [
         LoginGuard,
+        FeatureGuard,
         { provide: ErrorHandler, useClass: GlobalErrorHandler },
         {
             provide: APP_INITIALIZER,
