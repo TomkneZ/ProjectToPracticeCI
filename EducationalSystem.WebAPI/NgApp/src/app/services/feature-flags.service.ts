@@ -14,7 +14,7 @@ export class FeatureFlagsService {
   constructor(private http: HttpClient) {}
 
   loadConfig() {
-    let value =AppConfiguration.Setting().Application.noauth;
+    let value =AppConfiguration.Setting().noauth;
     this.config = {
       "no-auth": value,
       "feature": false
