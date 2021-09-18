@@ -29,9 +29,8 @@ namespace EducationalSystem.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             Configuration.Bind(new Config());
-
-            var name = "MYSQLCONNSTR_DefaultConnection";
-            var connectionString = System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+            
+            var connectionString = System.Environment.GetEnvironmentVariable(Constants.DbConnectionString, EnvironmentVariableTarget.Process);
 
             services.AddDbContext<DBContext>(options => options.UseSqlServer(connectionString));
 

@@ -59,8 +59,9 @@ const appRoutes: Routes = [
 
 import { FeatureFlagsService } from "./services/feature-flags.service";
 
-const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
-    featureFlagsService.loadConfig();
+export function featureFactory(featureFlagsService: FeatureFlagsService) {
+    return () => featureFlagsService.load();
+}
 
 @NgModule({
     imports: [
@@ -111,7 +112,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
             useFactory: featureFactory,
             deps: [FeatureFlagsService],
             multi: true
-        }
+        },
+        FeatureFlagsService
     ],
     bootstrap: [AppComponent]
 })
