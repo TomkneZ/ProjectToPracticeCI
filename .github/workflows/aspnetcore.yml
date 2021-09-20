@@ -70,12 +70,12 @@ jobs:
         msbuild ./ServiceLayer/ServiceLayer.csproj
         msbuild EducationalSystem.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build" 
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"    
-    - name: Deploy to Azure WebApp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: "./_build"
+    #- name: Deploy to Azure WebApp
+    #  uses: azure/webapps-deploy@v2
+    #  with:
+    #    app-name: ${{ env.AZURE_WEBAPP_NAME }}
+    #    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    #    package: "./_build"
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
     - name: Run Unit Tests
@@ -97,16 +97,16 @@ jobs:
     - name: Build Angular App
       working-directory: ./EducationalSystem.WebAPI/NgApp
       run: npm run build -- --prod
-    - name: Test Angular App
-      working-directory: ./EducationalSystem.WebAPI/NgApp
-      run: |
-        npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-    - name: 'Deploy to Azure WebApp'
-      uses: azure/webapps-deploy@v1
-      with: 
-        app-name: ${{ env.AZURE_WEBAPP_NAME_FRONT }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONT }}
-        package: "./EducationalSystem.WebAPI/NgApp/dist/NgApp"
+    #- name: Test Angular App
+    #  working-directory: ./EducationalSystem.WebAPI/NgApp
+    #  run: |
+    #    npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    #- name: 'Deploy to Azure WebApp'
+    #  uses: azure/webapps-deploy@v1
+    #  with: 
+    #    app-name: ${{ env.AZURE_WEBAPP_NAME_FRONT }}
+    #    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONT }}
+    #    package: "./EducationalSystem.WebAPI/NgApp/dist/NgApp"
   
   BDDTests:
    runs-on: windows-latest 
